@@ -5,6 +5,9 @@ import Button from './components/button/button';
 import React from 'react';
 
 import {useTelegram} from './hooks/useTelegram'
+import { Route, Routes } from 'react-router-dom';
+import ProductList from './components/productList/productList';
+import Form from './components/form/form';
 
 
 
@@ -22,7 +25,10 @@ function App() {
     
     <div className="App">
       <Header />
-      <Button onClick={onToggleButton}>toggle</Button>
+      <Routes>
+        <Route index element={<ProductList/>}/>
+        <Route path={'/form'} element={<Form/>}/>
+      </Routes>
     </div>
   );
 }

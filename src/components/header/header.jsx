@@ -9,6 +9,8 @@ const Header = () => {
 
   const {user, onClose} = useTelegram();
 
+  console.log(user)
+
 
   return (  
 
