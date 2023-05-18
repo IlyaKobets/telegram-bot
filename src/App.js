@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import './App.css';
 import Header from './components/header/header';
+import Button from './components/button/button';
+import React from 'react';
 
 
 
@@ -10,9 +12,10 @@ function App() {
 
   return (
     <div className="App">
-        Work
+        Work1
 
         <Header />
+
     </div>
   );
 }
