@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from "react";
 import { useState } from "react";
 import "./form.css";
 import { useTelegram } from "../../hooks/useTelegram";
+import Button from './../button/button'
 
 const Form = () => {
 
@@ -75,6 +76,8 @@ const Form = () => {
                 <option value={'physical'}>Физ. лицо</option>
                 <option value={'legal'}>Юр. лицо</option>
             </select>
+
+            <Button onClick={onSendData}>Отправить</Button>
         </div>
     );
 };
