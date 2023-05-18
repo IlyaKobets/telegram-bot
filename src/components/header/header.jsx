@@ -1,6 +1,5 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Button from "../button/button";
-
 
 
 const Header = () => {
