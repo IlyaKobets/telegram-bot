@@ -1,6 +1,6 @@
 import './productList.css'
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTelegram } from '../../hooks/useTelegram';
 import Header from '../header/header';
 import ProductItem from './../productItem/productItem'
@@ -19,9 +19,15 @@ const ProductList = () => {
     ]
     
 
-    const [addedItems, setAddedItem] = useState('');
+    const [addedItems, setAddedItem] = useState([]);
 
     const {tg} = useTelegram();
+
+    const getTotalPrice = (items) => {
+        return items.reduce((acc, item) => {
+            return acc += item.price
+        }, 0)
+    }
 
     const onAdd = (product) => {
         
@@ -30,20 +36,33 @@ const ProductList = () => {
         let newItems = [];
 
         if(alreadyAdded) {
-            newItems = addedItems.filter(item => item.id === product.id);
+            newItems = addedItems.filter(item => item.id !== product.id);
         } else {
             newItems = [...addedItems, product]
         }
-        
-        
+
         setAddedItem(newItems)
+
+
+        if(addedItems.length === 0) {
+            tg.MainButton.hide();
+        } else {
+            tg.MainButton.show();
+            tg.MainButton.setParams({
+                text: `привет ${getTotalPrice(addedItems)}`
+            })
+        }
+
     }
 
 
     return (  
         <div>
             <Header/>
+            <div>{addedItems.id}</div>
+
             <div className={'list'}>
+            
 
                 {products.map(item => (
                     <ProductItem
@@ -53,6 +72,12 @@ const ProductList = () => {
                     />
                 ))}
             </div>
+
+
+                    <div>{(getTotalPrice(addedItems))}</div>
+            {/* <div>{getTotalPrice}</div> */}
+
+            
         </div>
     );
 }
