@@ -1,0 +1,26 @@
+import React from "react";
+import Button from "../button/button";
+import './productItem.css'
+
+const ProductItem = ({product, className, onAdd}) => {
+    
+    const onAddHadler = () => {
+        onAdd(product)
+    }
+    
+    return (  
+        <div className={'product ' + className}>
+            <div className={'img'}/>
+            <div className={'title'}>{product.title}</div>
+            <div className={'decription'}>{product.description}</div>
+            <div className={'price'}>
+                <span> Стоимость: <b>{product.price}</b></span>
+            </div>
+            <Button className={'add-btn'} onClick={onAddHadler}>
+                Добавить в корзину
+            </Button>
+        </div> 
+    );
+}
+ 
+export default ProductItem;
