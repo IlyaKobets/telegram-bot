@@ -77,7 +77,7 @@ const Form = () => {
                 <option value={'legal'}>Юр. лицо</option>
             </select>
 
-            <Button onClick={onSendData}>Отправить</Button>
+            {/* <Button onClick={onSendData}>Отправить</Button> */}
         </div>
     );
 };

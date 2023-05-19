@@ -1,19 +1,23 @@
 import './productList.css'
-import ProductItem from '../productItem/productItem';
+import React from 'react';
 import { useState } from 'react';
 import { useTelegram } from '../../hooks/useTelegram';
+import Header from '../header/header';
+import ProductItem from './../productItem/productItem'
 
 
-const products = [
-    {id: '1', title: 'Джинсы', price: 5000, description: 'Синий цвет, прямые'},
-    {id: '2', title: 'Куртка', price: 12000, description: 'Зеленый цвет, теплая'}
-]
 
 
 
 
 
 const ProductList = () => {
+
+    const products = [
+        {id: '1', title: 'Джинсы', price: 5000, description: 'Синий цвет, прямые'},
+        {id: '2', title: 'Куртка', price: 12000, description: 'Зеленый цвет, теплая'}
+    ]
+    
 
     const [addedItems, setAddedItem] = useState('');
 
@@ -37,14 +41,18 @@ const ProductList = () => {
 
 
     return (  
-        <div className={'list'}>
-            {products.map(item => {
-                <ProductItem
-                    product={item}
-                    onAdd={onAdd}
-                    className={'item'}
-                />
-            })}
+        <div>
+            <Header/>
+            <div className={'list'}>
+
+                {products.map(item => (
+                    <ProductItem
+                        product={item}
+                        onAdd={onAdd}
+                        className={'item'}
+                    />
+                ))}
+            </div>
         </div>
     );
 }
